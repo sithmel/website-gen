@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "gulp"
+    "build": "gulp",
+    "watch": "gulp watch"
   },
   "repository": {
     "type": "git",
@@ -19,9 +20,11 @@
     "url": "https://github.com/sithmel/andreafrisano/issues"
   },
   "homepage": "https://github.com/sithmel/andreafrisano#readme",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-compile-handlebars": "^0.6.1",
+    "gulp-sass": "^3.1.0",
+    "normalize.css": "^5.0.0"
   }
 }
