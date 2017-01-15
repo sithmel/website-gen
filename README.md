@@ -9,6 +9,8 @@ website generator
 * Configuration: **config/data.json**
 * Contents: **templates**
 * Partials: **partials**
+* Client side js: **js/main.js**
+* Sass: **scss/main.scss**
 
 #TODO:
 
