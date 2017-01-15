@@ -9,3 +9,17 @@ Paths
 * Configuration: **config/data.json**
 * Contents: **templates**
 * Partials: **partials**
+
+TODO list:
+Design
+[] - Site structure/navigation
+[] - Palette
+[] - Font
+[] - design elements
+[] - Design pages
+
+SEO
+[] - Contents
+[] - Headers: title description etc
+[] - robots.txt
+[] - Social networks
