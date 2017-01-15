@@ -2,11 +2,17 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const handlebars = require('gulp-compile-handlebars');
 const data = require('./config/data');
+const browserify = require('browserify');
+const rename = require('gulp-rename');
+const source = require('vinyl-source-stream');
+const uglify = require('gulp-uglify');
+const streamify = require('gulp-streamify');
 
 const path = {
   templates: 'templates/**/*',
   partials: 'partials',
-  scss: 'scss/*.scss'
+  scss: 'scss/*.scss',
+  clientjs: 'js/main.js'
 };
 
 const dest = 'docs';
@@ -32,10 +38,18 @@ gulp.task('html', () => gulp.src(path.templates)
     .pipe(handlebars(data, handlebar_options))
     .pipe(gulp.dest(dest)));
 
+gulp.task('build:js', () =>
+  browserify(path.clientjs)
+    .bundle()
+    .pipe(source(path.clientjs))
+    .pipe(rename({ dirname: '' }))
+    .pipe(streamify(uglify()))
+    .pipe(gulp.dest(dest)));
 
 gulp.task('default', [
   'html',
-  'scss'
+  'scss',
+  'build:js'
 ]);
 
 gulp.task('watch', () => gulp.watch(Object.values(path), [
