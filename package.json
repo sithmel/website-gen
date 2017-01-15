@@ -1,5 +1,5 @@
 {
-  "name": "andreafrisano",
+  "name": "website-gen",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sithmel/andreafrisano.git"
+    "url": "git+https://github.com/sithmel/website-gen.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sithmel/andreafrisano/issues"
+    "url": "https://github.com/sithmel/website-gen/issues"
   },
-  "homepage": "https://github.com/sithmel/andreafrisano#readme",
+  "homepage": "https://github.com/sithmel/website-gen#readme",
   "dependencies": {},
   "devDependencies": {
     "browserify": "^13.3.0",
