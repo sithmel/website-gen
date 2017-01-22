@@ -32,6 +32,7 @@
     "gulp-uglify": "^2.0.0",
     "node-sass-package-importer": "^3.0.2",
     "normalize.css": "^5.0.0",
+    "serve": "^2.4.3",
     "vinyl-source-stream": "^1.1.0"
   }
 }
