@@ -7,6 +7,7 @@ const rename = require('gulp-rename');
 const source = require('vinyl-source-stream');
 const uglify = require('gulp-uglify');
 const streamify = require('gulp-streamify');
+const nodeSassImporter = require('node-sass-package-importer');
 
 const path = {
   templates: 'templates/**/*',
@@ -31,7 +32,10 @@ const handlebar_options = {
 */
 
 gulp.task('scss', () => gulp.src(path.scss)
-  .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+  .pipe(sass({
+    outputStyle: 'compressed',
+    importer: nodeSassImporter
+  }).on('error', sass.logError))
   .pipe(gulp.dest(dest)));
 
 gulp.task('html', () => gulp.src(path.templates)
