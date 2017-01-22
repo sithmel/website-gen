@@ -12,6 +12,15 @@ website generator
 * Client side js: **js/main.js**
 * Sass: **scss/main.scss**
 
+###How to fork
+First create new repo (example git@github.com:me/newrepo) then:
+```
+git clone git@github.com:sithmel/website-gen.git newrepo
+cd newrepo
+git remote set-url origin git@github.com:me/newrepo
+git push origin master
+```
+
 #TODO:
 
 ###Design
