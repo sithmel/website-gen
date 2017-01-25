@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "",
+    "title": "default",
     "description": "",
     "keywords": ""
   },
@@ -18,5 +18,14 @@
       "url": "",
       "title": ""
     }
-  ]
+  ],
+  "overrides": {
+    "index.html": {
+      "meta": {
+        "title": "override",
+        "description": "",
+        "keywords": ""
+      }
+    }
+  }
 }

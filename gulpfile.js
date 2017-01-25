@@ -8,8 +8,10 @@ const source = require('vinyl-source-stream');
 const uglify = require('gulp-uglify');
 const streamify = require('gulp-streamify');
 const nodeSassImporter = require('node-sass-package-importer');
+const gulpData = require('gulp-data');
+const path = require('path');
 
-const path = {
+const paths = {
   templates: 'templates/**/*',
   partials: 'partials',
   scss: 'scss/*.scss',
@@ -19,7 +21,7 @@ const path = {
 const dest = 'docs';
 
 const handlebar_options = {
-  batch: [path.partials],
+  batch: [paths.partials],
   helpers : {
     capitals : function(str){
       return str.toUpperCase();
@@ -31,21 +33,25 @@ const handlebar_options = {
 * tasks
 */
 
-gulp.task('scss', () => gulp.src(path.scss)
+gulp.task('scss', () => gulp.src(paths.scss)
   .pipe(sass({
     outputStyle: 'compressed',
     importer: nodeSassImporter
   }).on('error', sass.logError))
   .pipe(gulp.dest(dest)));
 
-gulp.task('html', () => gulp.src(path.templates)
+gulp.task('html', () => gulp.src(paths.templates)
+    .pipe(gulpData(function(file) {
+      const filename = path.basename(file.path);
+      return 'overrides' in data && filename in data.overrides ? data.overrides[filename] : {};
+    }))
     .pipe(handlebars(data, handlebar_options))
     .pipe(gulp.dest(dest)));
 
 gulp.task('build:js', () =>
-  browserify(path.clientjs)
+  browserify(paths.clientjs)
     .bundle()
-    .pipe(source(path.clientjs))
+    .pipe(source(paths.clientjs))
     .pipe(rename({ dirname: '' }))
     .pipe(streamify(uglify()))
     .pipe(gulp.dest(dest)));
@@ -56,6 +62,6 @@ gulp.task('default', [
   'build:js'
 ]);
 
-gulp.task('watch', () => gulp.watch(Object.values(path), [
+gulp.task('watch', () => gulp.watch(Object.values(paths), [
   'default'
 ]));
